@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Cinzel:wght@400..900&family=Comfortaa:wght@300..700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Onest:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 0 100% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 0 100% 59%;
+
+    --radius: 0.75rem;
+
+    /* Paleta de Colores Mishky */
+    --color-red-primary: #FF2D2D;
+    --color-red-hover: #E52D2D;
+    --color-red-active: #CC2525;
+    --color-red-glow: rgba(255, 45, 45, 0.2);
+    --color-red-shadow: rgba(255, 45, 45, 0.3);
+
+    --color-navy-overlay: rgba(26, 31, 58, 0.65);
+    --color-navy-base: #1A1F3A;
+    --color-navy-dark: #101426;
+
+    --color-blue-dark: #1A3A52;
+    --color-blue-light: #4A90E2;
+
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #666666;
+    --color-text-muted: #999999;
+    --color-border: #E0E0E0;
+    --color-border-hover: #C5C5C5;
+    --color-bg-warm: #FAFAF9;
+    --color-white: #FFFFFF;
+
+    --color-error: #FF3B30;
+    --color-success: #34C759;
+
+    /* Tipografías */
+    --font-main: "Roboto", sans-serif;
+    --font-display: 'Cinzel', sans-serif;
+    --font-serif: 'Cinzel', Georgia, serif;
+
+    /* Curvas y Transiciones */
+    --transition-fast: 200ms ease-out;
+    --transition-smooth: 300ms ease-in-out;
+    --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+
+  .dark {
+    --background: 224 25% 12%;
+    --foreground: 210 40% 98%;
+    --card: 224 22% 16%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 22% 16%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 0 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 25%;
+    --input: 217.2 32.6% 25%;
+    --ring: 0 100% 59%;
+  }
+}

@@ -1,0 +1,23 @@
+<script setup>
+import { cn } from '@/lib/utils.js'
+
+const props = defineProps({
+  class: {
+    type: [String, Object, Array],
+    default: '',
+  },
+})
+</script>
+
+<template>
+  <tr
+    :class="
+      cn(
+        'border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted',
+        props.class
+      )
+    "
+  >
+    <slot />
+  </tr>
+</template>
