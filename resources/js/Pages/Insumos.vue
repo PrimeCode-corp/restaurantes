@@ -239,13 +239,13 @@ const showSuccessToast = ref(false)
 <template>
   <AdminLayout active-nav="almacenes" active-submenu="insumos">
     <!-- Cabecera de Página -->
-    <div class="flex items-center justify-between gap-4">
+    <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 sm:gap-4">
       <div>
         <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 font-sans">Insumos</h1>
         <p class="text-xs text-gray-500 mt-0.5">Gestión de materias primas e ingredientes del almacén</p>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-end">
         <transition name="fade">
           <div
             v-if="showSuccessToast"
@@ -268,7 +268,7 @@ const showSuccessToast = ref(false)
     </div>
 
     <!-- Tarjeta Principal -->
-    <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[520px]">
+    <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-4 sm:p-6 flex flex-col justify-between min-h-0 sm:min-h-0 sm:min-h-[520px]">
       <div>
         <!-- Barra de Herramientas: Búsqueda + Filtro Categoría -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
@@ -437,7 +437,7 @@ const showSuccessToast = ref(false)
       @click.self="showModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header -->
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-2.5">
@@ -631,7 +631,7 @@ const showSuccessToast = ref(false)
       @click.self="showVerModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-2.5">
             <Package class="w-5 h-5 text-blue-400" />
@@ -718,7 +718,7 @@ const showSuccessToast = ref(false)
       @click.self="showDeleteModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden p-6 text-center animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden p-6 text-center animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto mb-3">
           <TriangleAlert class="w-6 h-6" />
         </div>

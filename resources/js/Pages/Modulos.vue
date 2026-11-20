@@ -224,7 +224,7 @@ function confirmarEliminar() {
     </div>
 
     <!-- Contenedor Principal (Tarjeta estilo image 3) -->
-    <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[520px]">
+    <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-0 sm:min-h-[520px]">
       <div>
         <!-- Barra de herramientas: Búsqueda y Botón + NUEVO -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
@@ -361,7 +361,7 @@ function confirmarEliminar() {
       @click.self="showModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header del Modal -->
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-2">
@@ -452,7 +452,7 @@ function confirmarEliminar() {
       @click.self="showVerModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <Layers class="w-5 h-5 text-blue-400" />
@@ -509,7 +509,7 @@ function confirmarEliminar() {
       @click.self="showDeleteModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden p-6 text-center animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden p-6 text-center animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto mb-3">
           <TriangleAlert class="w-6 h-6" />
         </div>

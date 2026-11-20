@@ -12,7 +12,10 @@ import {
   ReceiptText,
   ChevronLeft,
   ChevronDown,
+  X,
 } from 'lucide-vue-next'
+
+const emit = defineEmits(['close-mobile'])
 
 const props = defineProps({
   activeNav: {
@@ -189,7 +192,19 @@ const isSubmenuActive = (parentNav, subId, subRoute) => {
 </script>
 
 <template>
-  <aside class="w-56 bg-white border-r border-gray-200 flex flex-col shrink-0 z-10 select-none">
+  <aside class="w-64 sm:w-56 h-full bg-white border-r border-gray-200 flex flex-col shrink-0 z-10 select-none shadow-xl lg:shadow-none">
+    <!-- Encabezado exclusivo de móvil para cerrar sidebar -->
+    <div class="lg:hidden flex items-center justify-between px-3.5 py-2.5 border-b border-gray-100 bg-gray-50/70">
+      <span class="text-xs font-bold uppercase tracking-wider text-gray-500">Menú de Navegación</span>
+      <button
+        type="button"
+        class="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200 rounded-md transition-colors"
+        @click="$emit('close-mobile')"
+      >
+        <X class="w-4 h-4" />
+      </button>
+    </div>
+
     <nav class="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
       <!-- Dashboard -->
       <Link
@@ -200,6 +215,7 @@ const isSubmenuActive = (parentNav, subId, subRoute) => {
             ? 'bg-gray-100/90 text-gray-900 font-semibold shadow-xs'
             : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
         ]"
+        @click="$emit('close-mobile')"
       >
         <div class="flex items-center gap-2.5 truncate">
           <LayoutDashboard

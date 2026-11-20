@@ -154,19 +154,19 @@ const employees = [
   <AdminLayout active-nav="dashboard" active-submenu="">
     <!-- HEADER INTERNO CON SALUDO Y FILTROS -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-      <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 font-sans">
+      <h1 class="text-lg sm:text-2xl font-bold tracking-tight text-gray-900 font-sans">
         ¡Bienvenid@ al Dasboard!
       </h1>
 
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3">
         <!-- Rango de fecha -->
-        <div class="flex items-center gap-2.5 bg-white border border-gray-300 rounded-md px-3 py-1.5 text-xs text-gray-700 shadow-xs cursor-pointer hover:border-gray-400 transition-colors">
-          <span>{{ dateRange }}</span>
-          <Calendar class="w-4 h-4 text-gray-500" />
+        <div class="flex-1 sm:flex-initial flex items-center justify-between sm:justify-start gap-2 bg-white border border-gray-300 rounded-md px-3 py-1.5 text-xs text-gray-700 shadow-xs cursor-pointer hover:border-gray-400 transition-colors">
+          <span class="truncate">{{ dateRange }}</span>
+          <Calendar class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-500 shrink-0" />
         </div>
 
         <!-- Selector de Caja (shadcn-vue Select) -->
-        <div class="w-44">
+        <div class="w-full sm:w-44">
           <Select v-model="selectedCaja">
             <SelectTrigger class="bg-white text-xs h-8 border-gray-300 font-medium shadow-xs">
               <SelectValue placeholder="Seleccionar Caja" />
@@ -216,13 +216,14 @@ const employees = [
           </div>
         </div>
 
-        <!-- Gráfico de Línea Interactivo (SVG) -->
-        <div class="relative w-full h-[230px] select-none mt-1">
-          <svg
-            class="w-full h-full overflow-visible"
-            viewBox="0 0 650 230"
-            preserveAspectRatio="none"
-          >
+        <!-- Gráfico de Línea Interactivo (SVG con scroll horizontal suave en móviles si es necesario) -->
+        <div class="relative w-full overflow-x-auto select-none mt-1">
+          <div class="min-w-[480px] sm:min-w-0 h-[220px] sm:h-[230px] relative">
+            <svg
+              class="w-full h-full overflow-visible"
+              viewBox="0 0 650 230"
+              preserveAspectRatio="none"
+            >
             <!-- Líneas horizontales de guía (Y-Axis) -->
             <g class="text-[10px] fill-gray-400 font-sans" text-anchor="end">
               <text x="35" y="24">3500</text>
@@ -296,6 +297,7 @@ const employees = [
             <div class="text-[9px] text-gray-400">{{ hoveredPoint.label || 'Día registrado' }}</div>
           </div>
         </div>
+      </div>
       </Card>
 
       <!-- 3 TARJETAS LATERALES DE KPIS (COLUMNA DERECHA) -->
@@ -362,9 +364,9 @@ const employees = [
           </div>
         </div>
 
-        <div class="flex items-center justify-between gap-4 mt-2">
+        <div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 mt-2">
           <!-- Leyenda compacta de productos -->
-          <div class="flex-1 grid grid-cols-1 gap-0.5 text-[10.5px] text-gray-600 max-h-[190px] overflow-hidden pr-2">
+          <div class="w-full sm:flex-1 grid grid-cols-2 sm:grid-cols-1 gap-1 text-[10.5px] text-gray-600 max-h-[190px] overflow-hidden pr-2">
             <template v-for="item in products" :key="item.name">
               <div
                 class="flex items-center gap-2 cursor-pointer hover:text-gray-900 transition-colors py-0.2"
@@ -382,7 +384,7 @@ const employees = [
           </div>
 
           <!-- Gráfico Donut SVG -->
-          <div class="relative w-44 h-44 shrink-0 flex items-center justify-center">
+          <div class="relative w-40 h-40 sm:w-44 sm:h-44 shrink-0 flex items-center justify-center my-2 sm:my-0">
             <svg class="w-full h-full transform -rotate-90" viewBox="0 0 190 190">
               <path
                 v-for="(slice, idx) in donutSlices"

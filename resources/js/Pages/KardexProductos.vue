@@ -184,7 +184,7 @@ function aceptarProductoModal() {
       </h1>
 
       <!-- Contenedor Principal (Fiel a la captura 1 y 2) -->
-      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 space-y-6 min-h-[580px]">
+      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 space-y-6 min-h-0 sm:min-h-[580px]">
         <!-- Barra de Filtros Superiores -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-end">
           <!-- 1. Buscar Insumo/Producto con Check Todos (md:col-span-4) -->
@@ -399,7 +399,7 @@ function aceptarProductoModal() {
       @click.self="showModalProducto = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col">
+      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col max-h-[90vh] flex flex-col">
         <!-- Header -->
         <div class="px-6 py-4 flex items-center justify-between bg-[#20233B] text-white">
           <h3 class="font-bold text-sm text-[#4E73DF] font-sans tracking-tight">
@@ -417,7 +417,7 @@ function aceptarProductoModal() {
         <!-- Cuerpo del Modal -->
         <div class="p-6 space-y-4">
           <!-- Buscador -->
-          <div class="relative w-full max-w-sm">
+          <div class="relative w-full max-w-sm max-h-[90vh] flex flex-col">
             <Search class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               v-model="busquedaModal"

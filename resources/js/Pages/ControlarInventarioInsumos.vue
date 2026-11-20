@@ -133,7 +133,7 @@ const paginated = computed(() => {
       </h1>
 
       <!-- Tarjeta Contenedora Principal -->
-      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[580px]">
+      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-0 sm:min-h-[580px]">
         <div>
           <!-- Barra Superior: Buscador + Filtro ALMACEN - TODOS + Filtro STOCK - TODOS -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">

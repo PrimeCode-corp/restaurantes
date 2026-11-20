@@ -130,10 +130,10 @@ const reportData = ref([
         </div>
 
         <!-- Right Content Card (lg:col-span-8) -->
-        <div class="lg:col-span-8 bg-white rounded-xl shadow-sm border border-gray-100 min-h-[580px] overflow-hidden flex flex-col">
+        <div class="lg:col-span-8 bg-white rounded-xl shadow-sm border border-gray-100 min-h-0 sm:min-h-[580px] overflow-hidden flex flex-col">
           <!-- Empty State when report not yet generated -->
           <div v-if="!showReport" class="flex-1 flex items-center justify-center p-12 text-center">
-            <div class="text-gray-400 max-w-sm">
+            <div class="text-gray-400 max-w-sm max-h-[90vh] flex flex-col">
               <div class="w-16 h-16 bg-gray-50 border border-gray-200 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Calendar class="w-8 h-8 text-gray-300" />
               </div>
@@ -223,7 +223,7 @@ const reportData = ref([
         @click.self="showProductModal = false"
         class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
       >
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
           <!-- Header -->
           <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100">
             <h2 class="text-sm font-bold text-gray-800">Lista Productos</h2>

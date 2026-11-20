@@ -62,7 +62,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center gap-2 select-none">
+  <div class="flex flex-wrap items-center justify-between sm:justify-start gap-2 select-none w-full sm:w-auto">
     <!-- Selector de registros por página -->
     <div ref="dropdownRef" class="relative">
       <button
@@ -92,31 +92,33 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Botón Página Anterior -->
-    <button
-      type="button"
-      class="w-7 h-7 rounded border border-gray-300 bg-white hover:bg-gray-100 text-gray-600 flex items-center justify-center text-xs transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
-      :disabled="currentPage <= 1"
-      title="Página anterior"
-      @click="prevPage"
-    >
-      <ChevronLeft class="w-4 h-4" />
-    </button>
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <!-- Botón Página Anterior -->
+      <button
+        type="button"
+        class="w-7 h-7 rounded border border-gray-300 bg-white hover:bg-gray-100 text-gray-600 flex items-center justify-center text-xs transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
+        :disabled="currentPage <= 1"
+        title="Página anterior"
+        @click="prevPage"
+      >
+        <ChevronLeft class="w-4 h-4" />
+      </button>
 
-    <!-- Indicador de página -->
-    <span class="text-xs text-gray-600 font-medium px-1.5">
-      Página {{ currentPage }} de {{ totalPages }}
-    </span>
+      <!-- Indicador de página -->
+      <span class="text-xs text-gray-600 font-medium px-1 sm:px-1.5 whitespace-nowrap">
+        Pág. {{ currentPage }} de {{ totalPages }}
+      </span>
 
-    <!-- Botón Página Siguiente -->
-    <button
-      type="button"
-      class="w-7 h-7 rounded border border-gray-300 bg-white hover:bg-gray-100 text-gray-600 flex items-center justify-center text-xs transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
-      :disabled="currentPage >= totalPages"
-      title="Página siguiente"
-      @click="nextPage"
-    >
-      <ChevronLeft class="w-4 h-4 rotate-180" />
-    </button>
+      <!-- Botón Página Siguiente -->
+      <button
+        type="button"
+        class="w-7 h-7 rounded border border-gray-300 bg-white hover:bg-gray-100 text-gray-600 flex items-center justify-center text-xs transition-colors shadow-xs disabled:opacity-40 disabled:cursor-not-allowed"
+        :disabled="currentPage >= totalPages"
+        title="Página siguiente"
+        @click="nextPage"
+      >
+        <ChevronLeft class="w-4 h-4 rotate-180" />
+      </button>
+    </div>
   </div>
 </template>

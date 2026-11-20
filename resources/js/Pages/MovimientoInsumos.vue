@@ -215,7 +215,7 @@ function limpiarInsumo() {
         <!-- ============================================================= -->
         <!-- PANEL IZQUIERDO: FILTROS (Fiel a la captura 1 y 2)            -->
         <!-- ============================================================= -->
-        <Card class="lg:col-span-4 xl:col-span-3 bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[460px]">
+        <Card class="lg:col-span-4 xl:col-span-3 bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-0 sm:min-h-[460px]">
           <div class="space-y-5">
             <!-- Título de la tarjeta -->
             <h2 class="text-base font-bold text-gray-800 tracking-tight">
@@ -325,14 +325,14 @@ function limpiarInsumo() {
         <!-- ============================================================= -->
         <!-- PANEL DERECHO: ÁREA DEL REPORTE                               -->
         <!-- ============================================================= -->
-        <Card class="lg:col-span-8 xl:col-span-9 bg-white border border-gray-200/90 shadow-sm rounded-2xl p-6 min-h-[540px] flex flex-col justify-between">
+        <Card class="lg:col-span-8 xl:col-span-9 bg-white border border-gray-200/90 shadow-sm rounded-2xl p-6 min-h-0 sm:min-h-[540px] flex flex-col justify-between">
           <!-- Vista Inicial (en blanco como en la captura 1 y 2) -->
           <div v-if="!reporteGenerado" class="flex-1 flex flex-col items-center justify-center text-center p-8">
             <div class="w-16 h-16 rounded-full bg-gray-50 border border-gray-200/80 flex items-center justify-center text-gray-300 mb-3">
               <FileText class="w-8 h-8 stroke-[1.5]" />
             </div>
             <h3 class="text-sm font-semibold text-gray-700">Área de Reporte de Movimientos</h3>
-            <p class="text-xs text-gray-400 max-w-sm mt-1">
+            <p class="text-xs text-gray-400 max-w-sm mt-1 max-h-[90vh] flex flex-col">
               Seleccione los filtros deseados a la izquierda y haga clic en 
               <strong class="text-[#28A745]">MOSTRAR REPORTE</strong> para visualizar el kardex y detalle de movimientos.
             </p>
@@ -455,7 +455,7 @@ function limpiarInsumo() {
       @click.self="showModalInsumos = false"
       class="fixed inset-0 z-50 bg-black/40 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col">
+      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col max-h-[90vh] flex flex-col">
         <!-- Header del Modal -->
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">

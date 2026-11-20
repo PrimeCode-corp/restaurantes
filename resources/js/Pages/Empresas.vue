@@ -205,7 +205,7 @@ function confirmarEliminar() {
     </div>
 
     <!-- TARJETA PRINCIPAL -->
-    <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[480px]">
+    <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-4 sm:p-6 flex flex-col justify-between min-h-0 sm:min-h-0 sm:min-h-[480px]">
       <div>
         <!-- BARRA SUPERIOR -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
@@ -218,17 +218,17 @@ function confirmarEliminar() {
               class="pl-9 pr-4 py-1.5 h-9 text-xs rounded-lg border-gray-300 bg-white placeholder:text-gray-400 shadow-xs focus-visible:ring-1 focus-visible:ring-gray-400"
             />
           </div>
-          <div class="flex items-center gap-3">
+          <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <Button
               variant="outline"
               size="sm"
-              class="bg-white hover:bg-gray-50 text-gray-700 border-gray-300 rounded-lg px-3.5 py-1.5 h-9 text-xs font-semibold tracking-wider flex items-center gap-2 shadow-xs transition-all"
+              class="flex-1 sm:flex-initial bg-white hover:bg-gray-50 text-gray-700 border-gray-300 rounded-lg px-3 sm:px-3.5 py-1.5 h-9 text-xs font-semibold tracking-wider flex items-center justify-center gap-2 shadow-xs transition-all"
             >
               <UserCheck class="w-4 h-4 text-gray-600" /><span>MIS CUENTAS</span>
             </Button>
             <Button
               size="sm"
-              class="bg-[#20233B] hover:bg-[#2B2F4C] text-white rounded-lg px-4 py-1.5 h-9 text-xs font-semibold tracking-wider flex items-center gap-1.5 shadow-sm transition-all"
+              class="flex-1 sm:flex-initial bg-[#20233B] hover:bg-[#2B2F4C] text-white rounded-lg px-3.5 sm:px-4 py-1.5 h-9 text-xs font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all"
               @click="openNuevaEmpresa"
             >
               <Plus class="w-4 h-4 stroke-[2.5]" /><span>NUEVO</span>
@@ -315,7 +315,7 @@ function confirmarEliminar() {
       <Transition name="modal-fade">
         <div v-if="showEmpresaModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div class="absolute inset-0 bg-black/55 backdrop-blur-xs" @click="showEmpresaModal = false" />
-          <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+          <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[90vh] flex flex-col">
             <div class="bg-[#1A1D27] px-5 py-3.5 flex items-center justify-between shrink-0">
               <div class="flex items-center gap-2.5">
                 <Building2 class="w-4 h-4 text-[#F0302E]" />
@@ -329,8 +329,8 @@ function confirmarEliminar() {
             </div>
 
             <div class="p-5 space-y-4 overflow-y-auto max-h-[75vh]">
-              <div class="grid grid-cols-3 gap-3">
-                <div class="col-span-2 space-y-1">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="sm:col-span-2 space-y-1">
                   <label class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">N° de Documento</label>
                   <Input v-model="empresaForm.nDocumento" placeholder="20601234567" class="h-8 text-xs border-gray-300" />
                 </div>
@@ -342,7 +342,7 @@ function confirmarEliminar() {
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div class="space-y-1">
                   <label class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Razón Social</label>
                   <Input v-model="empresaForm.razonSocial" placeholder="Mi Empresa S.A.C." class="h-8 text-xs border-gray-300" />
@@ -398,7 +398,7 @@ function confirmarEliminar() {
       <Transition name="modal-fade">
         <div v-if="showCuentasModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div class="absolute inset-0 bg-black/55 backdrop-blur-xs" @click="showCuentasModal = false" />
-          <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+          <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[90vh] flex flex-col">
             <div class="bg-[#1A1D27] px-5 py-3.5 flex items-center justify-between shrink-0">
               <div class="flex items-center gap-2.5">
                 <CreditCard class="w-4 h-4 text-[#F0302E]" />
@@ -488,7 +488,7 @@ function confirmarEliminar() {
       <Transition name="modal-fade">
         <div v-if="showNuevaCuentaModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
           <div class="absolute inset-0 bg-black/50 backdrop-blur-xs" @click="showNuevaCuentaModal = false" />
-          <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+          <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[90vh] flex flex-col">
             <div class="bg-[#1A1D27] px-5 py-3.5 flex items-center justify-between shrink-0">
               <div class="flex items-center gap-2.5">
                 <CreditCard class="w-4 h-4 text-[#F0302E]" />
@@ -549,7 +549,7 @@ function confirmarEliminar() {
       <Transition name="modal-fade">
         <div v-if="showDeleteModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div class="absolute inset-0 bg-black/55 backdrop-blur-xs" @click="showDeleteModal = false" />
-          <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+          <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[90vh] flex flex-col">
             <div class="bg-[#1A1D27] px-5 py-3.5 flex items-center justify-between shrink-0">
               <div class="flex items-center gap-2.5">
                 <TriangleAlert class="w-4 h-4 text-[#F0302E]" />

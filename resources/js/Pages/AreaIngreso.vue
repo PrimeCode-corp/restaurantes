@@ -74,60 +74,60 @@ const handleExit = () => {
 
 <template>
   <Head title="Área de Ingreso - Mishky POS" />
-  <div class="relative w-full h-screen min-h-[640px] overflow-hidden bg-[#ECEEF2] flex flex-col justify-between select-none">
+  <div class="relative w-full min-h-screen overflow-y-auto sm:overflow-hidden bg-[#ECEEF2] flex flex-col justify-between select-none">
     <!-- PATRÓN DE FONDO (Comandas/Recibos estilo watermark) -->
     <div class="receipt-bg-pattern absolute inset-0 pointer-events-none z-0"></div>
 
     <!-- HEADER SUPERIOR -->
-    <header class="relative z-10 w-full flex items-start justify-between bg-[#1A1D27]">
+    <header class="relative z-10 w-full flex items-center sm:items-start justify-between bg-[#1A1D27] px-2 sm:px-0">
       <!-- LOGO MISHKY POS (Apegado al borde superior izquierdo) -->
-      <div class="bg-[#F0302E] hover:bg-[#E02624] transition-colors text-white px-7 py-3 shadow-md flex items-center gap-3">
-        <svg class="w-6 h-6 shrink-0 fill-current" viewBox="0 0 24 24">
+      <div class="bg-[#F0302E] hover:bg-[#E02624] transition-colors text-white px-4 sm:px-7 py-2.5 sm:py-3 shadow-md flex items-center gap-2.5 sm:gap-3 rounded-sm sm:rounded-none">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 shrink-0 fill-current" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79.09.32.22.63.38.92.69 1.24 1.94 2.16 3.41 2.45.31.06.63.09.96.09 1.18 0 2.26-.45 3.09-1.19.86-.77 1.41-1.87 1.45-3.1.02-.75-.15-1.46-.46-2.09-.16-.32-.36-.62-.6-.88-.47-.52-1.07-.92-1.75-1.16-.34-.12-.7-.2-1.08-.23-.1-.01-.2-.01-.3-.01-.64 0-1.24.15-1.78.41C8.36 5.92 9.09 4.3 11 3.5c-.5.5-.88 1.14-1.07 1.87-.22.84-.11 1.7.27 2.44.25.48.62.88 1.07 1.17.65.42 1.44.57 2.21.41.97-.2 1.78-.81 2.22-1.66.19-.36.3-.76.32-1.18 1.83 1.55 3 3.86 3 6.45 0 3.88-2.77 7.12-6.52 7.82l-.5.08z"/>
         </svg>
-        <span class="font-serif tracking-wider font-extrabold text-sm sm:text-[15px] text-white select-none uppercase">
+        <span class="font-serif tracking-wider font-extrabold text-xs sm:text-[15px] text-white select-none uppercase">
           MISHKY POS
         </span>
       </div>
 
       <!-- BOTÓN SALIR -->
-      <div class="p-2">
+      <div class="p-1 sm:p-2">
         <Button
           variant="outline"
           size="sm"
-          class="bg-[#1A1D27] hover:bg-[#252937] text-gray-300 hover:text-white border border-[#2D3244] hover:border-gray-500 rounded-lg px-3.5 py-1.5 text-xs font-semibold tracking-wider flex items-center gap-2 shadow-sm transition-all duration-200 cursor-pointer"
+          class="bg-[#1A1D27] hover:bg-[#252937] text-gray-300 hover:text-white border border-[#2D3244] hover:border-gray-500 rounded-lg px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-xs font-semibold tracking-wider flex items-center gap-1.5 sm:gap-2 shadow-sm transition-all duration-200 cursor-pointer"
           @click="handleExit"
         >
-          <span class="tracking-wide">SALIR</span>
+          <span class="tracking-wide text-xs">SALIR</span>
           <LogOut class="w-3.5 h-3.5 text-red-500 rotate-180" />
         </Button>
       </div>
     </header>
 
     <!-- CONTENEDOR CENTRAL ("ÁREA DE INGRESO") -->
-    <main class="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-8 py-4">
-      <div class="w-full max-w-[1240px] bg-[#1F222F] text-white rounded-[28px] px-8 sm:px-12 py-8 sm:py-10 shadow-[0_24px_55px_rgba(0,0,0,0.4)] border border-white/5 transition-all">
+    <main class="relative z-10 flex-1 flex items-center justify-center px-3 sm:px-8 py-4 sm:py-6">
+      <div class="w-full max-w-[1240px] bg-[#1F222F] text-white rounded-2xl sm:rounded-[28px] px-4 sm:px-12 py-5 sm:py-10 shadow-[0_24px_55px_rgba(0,0,0,0.4)] border border-white/5 transition-all">
         <!-- TÍTULO PRINCIPAL -->
-        <div class="text-center mb-7 sm:mb-9">
-          <h1 class="font-serif text-2xl sm:text-[28px] font-bold tracking-[0.16em] text-[#F3F4F6] uppercase">
+        <div class="text-center mb-5 sm:mb-9">
+          <h1 class="font-serif text-xl sm:text-[28px] font-bold tracking-[0.14em] sm:tracking-[0.16em] text-[#F3F4F6] uppercase">
             Área de Ingreso
           </h1>
         </div>
 
         <!-- GRILLA DE MÓDULOS -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           <template v-for="mod in modules" :key="mod.id">
             <!-- TARJETA CON shadcn-vue Card -->
             <Card
-              class="group relative overflow-hidden bg-[#F6F4F2] hover:bg-white text-gray-900 rounded-[18px] border border-[#E5E7EB] hover:border-[#F0302E]/60 shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-200 cursor-pointer p-5 flex flex-col justify-between min-h-[145px] active:scale-[0.98]"
+              class="group relative overflow-hidden bg-[#F6F4F2] hover:bg-white text-gray-900 rounded-xl sm:rounded-[18px] border border-[#E5E7EB] hover:border-[#F0302E]/60 shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-200 cursor-pointer p-3.5 sm:p-5 flex flex-row sm:flex-col items-center sm:items-stretch justify-between min-h-[75px] sm:min-h-[145px] active:scale-[0.98] gap-3"
               :class="{
                 'ring-2 ring-[#F0302E] border-[#F0302E] bg-white': selectedModule === mod.id
               }"
               @click="handleModuleClick(mod)"
             >
               <!-- ÍCONO ROJO EN CONTENEDOR REDONDEADO -->
-              <div class="mb-4">
-                <div class="w-11 h-11 rounded-[12px] bg-[#F0302E] text-white flex items-center justify-center shadow-md shadow-[#F0302E]/25 transition-transform duration-200 group-hover:scale-105">
+              <div class="sm:mb-4 shrink-0">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[12px] bg-[#F0302E] text-white flex items-center justify-center shadow-md shadow-[#F0302E]/25 transition-transform duration-200 group-hover:scale-105">
                   <svg v-if="mod.iconType === 'admin'" class="w-6 h-6 fill-white" viewBox="0 0 24 24">
                     <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm2.8 13.8l-.5.3.1.6c.03.14.05.28.05.42 0 .14-.02.28-.05.42l-.1.6.5.3c.12.07.16.22.1.34l-.46.8c-.06.11-.19.16-.31.12l-.61-.23c-.21.18-.45.32-.71.42l-.15.61c-.03.13-.14.22-.27.22h-.92c-.13 0-.24-.09-.27-.22l-.15-.61c-.26-.1-.5-.24-.71-.42l-.61.23c-.12.04-.25-.01-.31-.12l-.46-.8c-.06-.12-.02-.27.1-.34l.5-.3-.1-.6c-.03-.14-.05-.28-.05-.42 0-.14.02-.28.05-.42l.1-.6-.5-.3c-.12-.07-.16-.22-.1-.34l.46-.8c.06-.11.19-.16.31-.12l.61.23c.21-.18.45-.32.71-.42l.15-.61c.03-.13.14-.22.27-.22h.92c.13 0 .24.09.27.22l.15.61c.26.1.5.24.71.42l.61-.23c.12-.04.25.01.31.12l.46.8c.06.12.02.27-.1.34zm-2.8-.2c-.88 0-1.6.72-1.6 1.6s.72 1.6 1.6 1.6 1.6-.72 1.6-1.6-.72-1.6-1.6-1.6z"/>
                   </svg>
@@ -155,12 +155,12 @@ const handleExit = () => {
               </div>
 
               <!-- TÍTULO, SUBTÍTULO Y CHEVRON -->
-              <div class="flex items-end justify-between gap-2 mt-auto">
+              <div class="flex items-center sm:items-end justify-between gap-2 flex-1 sm:mt-auto">
                 <div class="flex-1 pr-1">
-                  <h2 class="font-serif font-bold text-gray-900 text-sm sm:text-[15px] tracking-wider leading-tight uppercase mb-1 group-hover:text-black">
+                  <h2 class="font-serif font-bold text-gray-900 text-xs sm:text-[15px] tracking-wider leading-tight uppercase mb-0.5 sm:mb-1 group-hover:text-black">
                     {{ mod.title }}
                   </h2>
-                  <p class="text-xs text-gray-500 font-normal leading-tight">
+                  <p class="text-[11px] sm:text-xs text-gray-500 font-normal leading-tight">
                     {{ mod.subtitle }}
                   </p>
                 </div>

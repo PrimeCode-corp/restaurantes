@@ -135,7 +135,7 @@ function vaciarFormulario() {
       </div>
 
       <!-- Tarjeta Contenedora Principal -->
-      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[580px]">
+      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-0 sm:min-h-[580px]">
         <div>
           <!-- Barra Superior: Buscador + Selector Almacén + Botones REINICIAR STOCK & GUARDAR -->
           <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 mb-6">

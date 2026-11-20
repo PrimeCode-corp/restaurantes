@@ -331,7 +331,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       <Card class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <!-- Buscador -->
-          <div class="relative flex-1 max-w-sm">
+          <div class="relative flex-1 max-w-sm max-h-[90vh] flex flex-col">
             <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               v-model="searchQuery"
@@ -452,7 +452,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showModalIngreso = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden flex flex-col animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">
             Nuevo Ingreso
@@ -570,7 +570,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showModalEgreso = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden flex flex-col animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">
             Nuevo Egreso
@@ -682,7 +682,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showModalConcepto = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden flex flex-col animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">
             Nuevo Concepto

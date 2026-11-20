@@ -271,7 +271,7 @@ const openDetalle = (item) => {
         @click.self="showDetalleModal = false"
         class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
       >
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
           <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100">
             <h2 class="text-xs font-bold text-gray-800">Ver Venta Detallada</h2>
             <button @click="showDetalleModal = false" class="text-gray-400 hover:text-gray-700">
@@ -346,7 +346,7 @@ const openDetalle = (item) => {
         @click.self="showEmailModal = false"
         class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
       >
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
           <div class="px-5 py-3.5 flex items-center justify-between border-b border-gray-100">
             <h2 class="text-xs font-bold text-gray-800">Enviar Email</h2>
             <button @click="showEmailModal = false" class="text-gray-400 hover:text-gray-700">
@@ -388,7 +388,7 @@ const openDetalle = (item) => {
         @click.self="showWhatsappModal = false"
         class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
       >
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
           <div class="px-5 py-3.5 flex items-center justify-between border-b border-gray-100">
             <h2 class="text-xs font-bold text-gray-800">Enviar Whatsapp</h2>
             <button @click="showWhatsappModal = false" class="text-gray-400 hover:text-gray-700">
@@ -430,7 +430,7 @@ const openDetalle = (item) => {
         @click.self="showReimprimirModal = false"
         class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
       >
-        <div class="bg-[#2E3346] text-white rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col md:flex-row min-h-[550px]">
+        <div class="bg-[#2E3346] text-white rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col md:flex-row min-h-0 sm:min-h-[550px] max-h-[90vh] flex flex-col">
           <!-- Left: Thermal Ticket Mockup -->
           <div class="flex-1 bg-gray-500/30 p-6 flex items-center justify-center overflow-y-auto max-h-[600px]">
             <div class="bg-white text-gray-900 w-72 p-5 rounded shadow font-mono text-[9px] leading-tight space-y-2">

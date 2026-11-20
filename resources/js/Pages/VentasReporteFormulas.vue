@@ -50,7 +50,7 @@ const formulas = ref([
       <h1 class="text-xl font-bold text-gray-800 mb-6">Reporte de Formulas</h1>
 
       <!-- PDF Viewer Wrapper Card -->
-      <div class="bg-[#2E3346] rounded-xl shadow-lg p-4 flex flex-col min-h-[680px]">
+      <div class="bg-[#2E3346] rounded-xl shadow-lg p-4 flex flex-col min-h-0 sm:min-h-[680px]">
         <!-- PDF Top Bar -->
         <div class="bg-[#1E2540] text-white px-5 py-2.5 rounded-t-lg flex items-center justify-between text-xs mb-3">
           <div class="flex items-center gap-3">

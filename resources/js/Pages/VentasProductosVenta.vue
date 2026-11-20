@@ -623,7 +623,7 @@ const selectedInactivo = ref(null)
       </div>
 
       <!-- PDF Preview Window -->
-      <div class="bg-[#2E3346] rounded-xl shadow-lg p-4 flex gap-4 min-h-[650px]">
+      <div class="bg-[#2E3346] rounded-xl shadow-lg p-4 flex gap-4 min-h-0 sm:min-h-[650px]">
         <!-- PDF Sidebar Thumbnails -->
         <div class="w-44 bg-[#1E2540] rounded-lg p-2.5 flex flex-col gap-3 overflow-y-auto max-h-[620px] text-white text-center text-xs">
           <div class="border-2 border-blue-400 bg-white p-2 rounded shadow text-gray-800 text-[9px] h-36 flex flex-col justify-between">
@@ -728,7 +728,7 @@ const selectedInactivo = ref(null)
       @click.self="showInactivosModal = false"
       class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
     >
-      <div class="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header -->
         <div class="bg-[#1E2540] text-white px-5 py-3.5 flex items-center justify-between">
           <h2 class="text-xs font-bold tracking-wide">Inactivos</h2>
@@ -807,7 +807,7 @@ const selectedInactivo = ref(null)
       @click.self="showCategoriaModal = false"
       class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
     >
-      <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="bg-[#1E2540] text-white px-5 py-3.5 flex items-center justify-between">
           <h2 class="text-xs font-bold tracking-wide">Nueva Categoría</h2>
           <button @click="showCategoriaModal = false" class="text-red-400 hover:text-white transition-colors">

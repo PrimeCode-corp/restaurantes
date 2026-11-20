@@ -388,7 +388,7 @@ function cambiarClave() {
       @click.self="showClaveModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <Lock class="w-4 h-4 text-red-500" />

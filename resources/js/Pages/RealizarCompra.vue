@@ -485,7 +485,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div class="flex flex-1 items-center gap-3">
             <!-- Input Buscador -->
-            <div class="relative flex-1 max-w-sm">
+            <div class="relative flex-1 max-w-sm max-h-[90vh] flex flex-col">
               <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
                 v-model="searchQuery"
@@ -845,7 +845,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
 
           <!-- Barra de Búsqueda Insumo + Botón + AÑADIR -->
           <div class="flex items-center justify-between gap-4">
-            <div class="relative flex-1 max-w-xl">
+            <div class="relative flex-1 max-w-xl max-h-[90vh] flex flex-col">
               <Input
                 v-model="compraForm.busquedaInsumoText"
                 type="text"
@@ -1062,7 +1062,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showModalProveedores = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-4xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-4xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header del Modal -->
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">
@@ -1080,7 +1080,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
         <!-- Cuerpo del Modal -->
         <div class="p-6 space-y-4">
           <!-- Buscador de Proveedor -->
-          <div class="relative max-w-sm">
+          <div class="relative max-w-sm max-h-[90vh] flex flex-col">
             <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               v-model="searchProveedorModal"
@@ -1231,7 +1231,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showModalInsumos = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header del Modal -->
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">
@@ -1249,7 +1249,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
         <!-- Cuerpo Modal -->
         <div class="p-6 space-y-4">
           <!-- Buscador de Insumos -->
-          <div class="relative max-w-sm">
+          <div class="relative max-w-sm max-h-[90vh] flex flex-col">
             <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
               v-model="searchInsumoModal"
@@ -1354,7 +1354,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showVerModal = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-2xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header del Modal -->
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-sm text-gray-900 font-sans tracking-tight">
@@ -1469,7 +1469,7 @@ const formatMoney = (val) => Number(val || 0).toFixed(2)
       @click.self="showDeleteModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header Rojo / Negro -->
         <div class="bg-[#1A1D27] text-white px-5 py-3.5 flex items-center justify-between">
           <div class="flex items-center gap-2">

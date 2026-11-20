@@ -287,7 +287,7 @@ const almacenesDestino = computed(() =>
         </h1>
       </div>
 
-      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[520px]">
+      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-0 sm:min-h-[520px]">
         <div>
           <!-- Barra de filtros -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-5">
@@ -643,7 +643,7 @@ const almacenesDestino = computed(() =>
       @click.self="showVerModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header modal -->
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <h3 class="font-bold text-sm uppercase tracking-wide">Ver Transferencia</h3>
@@ -751,7 +751,7 @@ const almacenesDestino = computed(() =>
       @click.self="showListaModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <!-- Header -->
         <div class="bg-[#1A1D27] text-white px-6 py-4 flex items-center justify-between">
           <h3 class="font-bold text-sm uppercase tracking-wide">Lista Insumos</h3>

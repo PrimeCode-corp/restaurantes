@@ -324,12 +324,12 @@ function confirmDelete() {
       </div>
 
       <!-- Tarjeta Blanca Contenedora (Fiel a la pantalla 1) -->
-      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-[560px]">
+      <Card class="bg-white border border-gray-200/90 shadow-sm rounded-2xl p-5 sm:p-7 flex flex-col justify-between min-h-0 sm:min-h-[560px]">
         <div>
           <!-- Barra Superior: Buscador + Botón + NUEVO -->
           <div class="flex items-center justify-between gap-4 mb-6">
             <!-- Barra de búsqueda redondeada -->
-            <div class="relative w-full max-w-sm">
+            <div class="relative w-full max-w-sm max-h-[90vh] flex flex-col">
               <Search class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
                 v-model="searchQuery"
@@ -491,7 +491,7 @@ function confirmDelete() {
       @click.self="showModal = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in duration-150"
     >
-      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col">
+      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl overflow-hidden animate-in zoom-in-95 duration-150 flex flex-col max-h-[90vh] flex flex-col">
         <!-- Header del Modal -->
         <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white">
           <h3 class="font-bold text-base text-gray-900 font-sans tracking-tight">
@@ -788,7 +788,7 @@ function confirmDelete() {
       @click.self="showVerModal = false"
       class="fixed inset-0 z-50 bg-black/45 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="bg-[#20233B] text-white px-6 py-4 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <Building2 class="w-4 h-4 text-[#3E55B3]" />
@@ -872,7 +872,7 @@ function confirmDelete() {
       @click.self="showDeleteModal = false"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden p-6 text-center space-y-4 animate-in zoom-in-95 duration-150">
+      <div class="bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-sm overflow-hidden p-6 text-center space-y-4 animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
         <div class="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto">
           <TriangleAlert class="w-6 h-6 stroke-[2]" />
         </div>

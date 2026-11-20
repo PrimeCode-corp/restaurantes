@@ -171,7 +171,7 @@ const zoomOut = () => {
           <!-- Si reportLoaded es falso (reporte.png) -->
           <div
             v-if="!reportLoaded"
-            class="bg-white rounded-2xl border border-gray-100 shadow-sm min-h-[560px] flex items-center justify-center text-gray-300"
+            class="bg-white rounded-2xl border border-gray-100 shadow-sm min-h-0 sm:min-h-[560px] flex items-center justify-center text-gray-300"
           >
             <!-- Panel en blanco como en reporte.png -->
           </div>
@@ -179,7 +179,7 @@ const zoomOut = () => {
           <!-- Si reportLoaded es verdadero (reporte2.png) -->
           <div
             v-else
-            class="bg-[#2D3139] rounded-2xl border border-gray-300 shadow-md overflow-hidden flex flex-col min-h-[580px]"
+            class="bg-[#2D3139] rounded-2xl border border-gray-300 shadow-md overflow-hidden flex flex-col min-h-0 sm:min-h-[580px]"
           >
             <!-- Barra Superior del Visor PDF (Toolbar oscuro idéntico a reporte2.png) -->
             <div class="bg-[#32363E] text-gray-200 px-4 py-2 flex items-center justify-between border-b border-gray-700 select-none">
@@ -268,7 +268,7 @@ const zoomOut = () => {
             </div>
 
             <!-- Cuerpo del Visor con Miniatura Izquierda y Página Principal Derecha -->
-            <div class="flex-1 flex bg-[#3A3E47] overflow-hidden min-h-[500px]">
+            <div class="flex-1 flex bg-[#3A3E47] overflow-hidden min-h-0 sm:min-h-[500px]">
               <!-- Miniatura Izquierda (Thumbnail) -->
               <div class="w-44 bg-[#32363E] border-r border-gray-700 p-4 flex flex-col items-center select-none">
                 <div class="w-28 h-40 bg-[#C8CBD0] rounded shadow-md border border-gray-400 hover:ring-2 hover:ring-blue-400 transition-all cursor-pointer"></div>
@@ -277,7 +277,7 @@ const zoomOut = () => {
               <!-- Área Principal del Documento: Hoja del Reporte -->
               <div class="flex-1 bg-[#4A4E57] p-8 flex items-center justify-center overflow-auto">
                 <div
-                  class="w-[520px] min-h-[640px] bg-[#C8CBD0] rounded-sm shadow-2xl flex flex-col items-center justify-center border border-gray-400 select-none transition-transform"
+                  class="w-[520px] min-h-0 sm:min-h-[640px] bg-[#C8CBD0] rounded-sm shadow-2xl flex flex-col items-center justify-center border border-gray-400 select-none transition-transform"
                   :style="{ transform: `scale(${zoomLevel / 80})`, transformOrigin: 'top center' }"
                 >
                   <div class="text-center space-y-2 p-8">

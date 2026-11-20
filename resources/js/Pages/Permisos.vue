@@ -176,7 +176,7 @@ function actualizarPermisos() {
     </div>
 
     <!-- CONTENEDOR PRINCIPAL DIVIDIDO EN 2 PANELES (Fiel a las imágenes 2 y 3) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 min-h-[540px]">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 min-h-0 sm:min-h-[540px]">
       <!-- ====================================================================
            PANEL IZQUIERDO: LISTA DE ROLES (45%)
            ==================================================================== -->

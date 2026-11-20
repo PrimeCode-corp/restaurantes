@@ -200,7 +200,7 @@ const openNewModal = () => {
         @click.self="showModal = false"
         class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
       >
-        <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col">
           <!-- Header -->
           <div class="px-6 py-4 flex items-center justify-between border-b border-gray-100">
             <h2 class="text-sm font-bold text-gray-800">Nuevo Cliente</h2>

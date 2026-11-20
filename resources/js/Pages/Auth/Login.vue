@@ -753,8 +753,7 @@ const handleLogin = () => {
   }
 
   .left-panel {
-    height: 380px;
-    padding: 30px 24px;
+    display: none;
   }
 
   .decorative-curve {
@@ -776,12 +775,17 @@ const handleLogin = () => {
 
   .right-panel {
     height: auto;
-    min-height: calc(100vh - 380px);
-    padding: 40px 24px 60px 24px;
+    min-height: 100vh;
+    padding: 32px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .form-container {
     max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .panel-footer {
