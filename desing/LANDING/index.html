@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mishky — Controla todo el servicio desde una sola pantalla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ===================== CSS CUSTOM PROPERTIES (COLORES ORIGINALES DE LA LANDING) ===================== */
+  :root {
+    --cream: #F5F0E8;
+    --cream-light: #FAF7F2;
+    --dark: #1a1a1a;
+    --red: #E63B2E;
+    --green-dark: #2D6A4F;
+    --green-mid: #4A7C59;
+    --green-light: #E8F0E9;
+    --amber: #E9B44C;
+    --white: #FFFFFF;
+    --text-secondary: #666666;
+    --text-body: #555555;
+    --border: #E8E3DA;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.15), 0 8px 24px rgba(0,0,0,0.08);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+  }
+
+  /* ===================== RESET & BASE ===================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ===================== UTILITY ===================== */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .container-wide { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  /* ===================== NAVBAR ===================== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.2s;
+  }
+  .navbar.scrolled { box-shadow: var(--shadow-sm); }
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 32px;
+    gap: 32px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .logo img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-link:hover { background: #F0ECE4; color: var(--red); }
+  .nav-link svg { opacity: 0.5; flex-shrink: 0; }
+  .nav-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .btn-login {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    border-radius: var(--radius-sm);
+    transition: background 0.15s;
+  }
+  .btn-login:hover { background: #F0ECE4; }
+  .btn-demo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    background: var(--dark);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+  .btn-demo:hover { background: #2d2d2d; transform: translateY(-1px); }
+
+  /* ===================== HERO SECTION ===================== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 68px);
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1.5px solid var(--red);
+    border-radius: 100px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--red);
+    margin-bottom: 32px;
+    width: fit-content;
+    letter-spacing: 0.01em;
+    transition: background 0.15s;
+  }
+  .hero-badge:hover { background: #FFF0EF; }
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero-h1 {
+    font-size: clamp(38px, 4.2vw, 56px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    color: var(--dark);
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-body);
+    max-width: 440px;
+    margin-bottom: 40px;
+  }
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    background: var(--dark);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: #2a2a2a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn-primary .icon-circle {
+    width: 26px;
+    height: 26px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .btn-text-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s, color 0.15s;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .btn-text-link:hover { gap: 10px; color: var(--red); }
+
+  /* Hero Right — Atmosphere Original Restaurant */
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-photo-bg {
+    width: 100%;
+    height: 100%;
+    background: #100c08;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-photo-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 30% 30%, rgba(255,180,80,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 70% 60%, rgba(255,140,60,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 50% 10%, rgba(200,120,40,0.06) 0%, transparent 70%),
+      linear-gradient(180deg, #100c08 0%, #1e150e 30%, #251810 60%, #100c08 100%);
+    pointer-events: none;
+  }
+  .lantern {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFE0A0 0%, #E8A040 40%, transparent 70%);
+    filter: blur(1px);
+    opacity: 0.9;
+  }
+  .lantern-1 { width: 40px; height: 40px; top: 10%; left: 20%; }
+  .lantern-2 { width: 34px; height: 34px; top: 15%; left: 52%; }
+  .lantern-3 { width: 38px; height: 38px; top: 8%; left: 75%; }
+  .bg-table {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(80,50,20,0.7), rgba(40,25,10,0.9));
+    border: 1px solid rgba(100,70,30,0.3);
+  }
+  .bg-table-1 { width: 90px; height: 90px; bottom: 25%; left: 10%; }
+  .bg-table-2 { width: 110px; height: 110px; bottom: 20%; left: 35%; }
+
+  /* Floating UI Card */
+  .hero-ui-card {
+    position: absolute;
+    bottom: 48px;
+    right: 32px;
+    width: 310px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    z-index: 10;
+  }
+  .ui-card-header {
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid #F0EBE0;
+  }
+  .ui-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .ui-card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .ui-stat { text-align: center; }
+  .ui-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .ui-stat-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .ui-booking-list { padding: 8px 0; }
+  .ui-booking-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 18px;
+    gap: 8px;
+  }
+  .ui-booking-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .ui-booking-name span {
+    font-weight: 400;
+    color: var(--text-secondary);
+  }
+  .ui-booking-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+  .badge-late { background: #FEE9E8; color: var(--red); }
+  .badge-booked { background: var(--green-light); color: var(--green-dark); }
+  .badge-arriving { background: #FFF6E0; color: #B87A00; }
+  .ui-card-footer {
+    background: #F8F4ED;
+    border-top: 1px solid #F0EBE0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 12px 18px;
+    gap: 12px;
+  }
+  .ui-footer-stat { text-align: center; }
+  .ui-footer-num {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark);
+  }
+  .ui-footer-label { font-size: 9.5px; color: var(--text-secondary); }
+
+  /* Hero Stats Bar */
+  .hero-stats-bar {
+    background: var(--dark);
+    color: var(--white);
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 48px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stat-item:last-child { border-right: none; }
+  .hero-stat-num {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+  .hero-stat-label {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  /* ===================== SECCIÓN SISTEMA ===================== */
+  .section-system {
+    background: var(--white);
+    padding: 100px 0 80px;
+  }
+  .system-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+  .system-h2 {
+    font-size: clamp(32px, 3.5vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--dark);
+  }
+  .system-desc {
+    font-size: 17px;
+    color: var(--text-body);
+    line-height: 1.65;
+    padding-top: 8px;
+  }
+  .system-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .system-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .system-card-preview {
+    padding: 28px 24px 0;
+    min-height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .card-booking { background: #F9EDE8; }
+  .card-floor { background: var(--green-light); }
+  .card-rota { background: #F5EEE0; }
+  .system-card-body {
+    background: var(--white);
+    padding: 24px;
+    margin: 16px 8px 8px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+  .card-h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .card-desc {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+
+  /* Booking UI Mockup */
+  .booking-mockup {
+    background: white;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    overflow: hidden;
+  }
+  .bm-header {
+    background: var(--dark);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bm-header-title { font-size: 11px; font-weight: 700; color: white; }
+  .bm-header-date { font-size: 10px; color: rgba(255,255,255,0.6); }
+  .bm-row {
+    display: flex;
+    align-items: center;
+    padding: 7px 14px;
+    border-bottom: 1px solid #F5F0E8;
+    gap: 10px;
+  }
+  .bm-time { font-size: 11px; font-weight: 700; color: var(--dark); }
+  .bm-name { font-size: 11.5px; font-weight: 600; color: var(--dark); flex: 1; }
+  .bm-status { font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 100px; }
+
+  /* Floor UI Mockup */
+  .floor-mockup {
+    background: white;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    padding: 16px;
+  }
+  .floor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .floor-table {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    margin: 0 auto;
+  }
+  .ft-green { background: var(--green-mid); }
+  .ft-amber { background: var(--amber); color: var(--dark); }
+  .ft-red { background: var(--red); }
+  .ft-white { background: white; color: var(--dark); border: 2px solid #E8E3DA; }
+
+  /* Footer Section */
+  .footer {
+    background: #111111;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 48px 32px;
+    color: white;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="logo">
+      <img src="/images/Logotipo_Secundario.png" alt="Mishky Logo Secundario" />
+    </a>
+    <div class="nav-links">
+      <a href="#" class="nav-link">
+        Producto
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="nav-link">
+        Restaurantes
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#precios" class="nav-link">Precios</a>
+      <a href="#clientes" class="nav-link">Clientes</a>
+      <a href="#blog" class="nav-link">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <a href="/login" class="btn-login">Iniciar sesión</a>
+      <a href="#demo" class="btn-demo">Solicitar demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <a href="#" class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Nuevo · Pantalla de cocina ya disponible →
+    </a>
+    <h1 class="hero-h1">Gestiona todo el servicio desde una sola pantalla.</h1>
+    <p class="hero-sub">Reservas, piso en vivo y turnos del personal para restaurantes de alto flujo. Tu anfitrión, tu pase de cocina y tu oficina finalmente sincronizados.</p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn-primary">
+        Solicitar demo
+        <span class="icon-circle">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M7 3L10 6L7 9" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <a href="#demo" class="btn-text-link">30 días gratis</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-bg">
+      <div class="lantern lantern-1"></div>
+      <div class="lantern lantern-2"></div>
+      <div class="lantern lantern-3"></div>
+      <div class="bg-table bg-table-1"></div>
+      <div class="bg-table bg-table-2"></div>
+    </div>
+
+    <!-- UI Card -->
+    <div class="hero-ui-card">
+      <div class="ui-card-header">
+        <div class="ui-card-title">Esta noche · Salón principal · En vivo</div>
+        <div class="ui-card-stats">
+          <div class="ui-stat">
+            <div class="ui-stat-num">142</div>
+            <div class="ui-stat-label">cubiertos</div>
+          </div>
+          <div class="ui-stat">
+            <div class="ui-stat-num">18</div>
+            <div class="ui-stat-label">en espera</div>
+          </div>
+          <div class="ui-stat">
+            <div class="ui-stat-num">0</div>
+            <div class="ui-stat-label">no-shows</div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-booking-list">
+        <div class="ui-booking-row">
+          <span class="ui-booking-name">Morales <span>· 2</span></span>
+          <span class="ui-booking-badge badge-late">Tardó 6 min</span>
+        </div>
+        <div class="ui-booking-row">
+          <span class="ui-booking-name">Vargas <span>· 3</span></span>
+          <span class="ui-booking-badge badge-booked">Reservado</span>
+        </div>
+        <div class="ui-booking-row">
+          <span class="ui-booking-name">Walk-in <span>· 2</span></span>
+          <span class="ui-booking-badge badge-arriving">Mesa 7 · 6 min</span>
+        </div>
+      </div>
+      <div class="ui-card-footer">
+        <div class="ui-footer-stat">
+          <div class="ui-footer-num">11s</div>
+          <div class="ui-footer-label">para ubicar clientes</div>
+        </div>
+        <div class="ui-footer-stat">
+          <div class="ui-footer-num">2h</div>
+          <div class="ui-footer-label">ahorradas en turnos/sem</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="hero-stats-bar">
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">-38%</div>
+    <div class="hero-stat-label">menos mesas perdidas (no-shows)</div>
+  </div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">11s</div>
+    <div class="hero-stat-label">para asignar mesa a clientes directos</div>
+  </div>
+  <div class="hero-stat-item">
+    <div class="hero-stat-num">2h</div>
+    <div class="hero-stat-label">ahorradas en planificar turnos</div>
+  </div>
+</div>
+
+<!-- SISTEMA -->
+<section class="section-system">
+  <div class="container">
+    <div class="system-header">
+      <h2 class="system-h2">Un solo sistema para la recepción, el pase y la oficina</h2>
+      <p class="system-desc">Tres pantallas sincronizadas en la misma noche. Comienza con reservas, incorpora el piso en vivo y los turnos cuando lo necesites.</p>
+    </div>
+
+    <div class="system-cards">
+      <div class="system-card">
+        <div class="system-card-preview card-booking">
+          <div class="booking-mockup">
+            <div class="bm-header">
+              <span class="bm-header-title">RESERVAS · ESTA NOCHE</span>
+              <span class="bm-header-date">142 cubiertos</span>
+            </div>
+            <div class="bm-row">
+              <span class="bm-time">19:00</span>
+              <span class="bm-name">Morales</span>
+              <span class="bm-status badge-late">Tardó</span>
+            </div>
+            <div class="bm-row">
+              <span class="bm-time">19:15</span>
+              <span class="bm-name">Vargas</span>
+              <span class="bm-status badge-booked">Reservado</span>
+            </div>
+          </div>
+        </div>
+        <div class="system-card-body">
+          <div class="card-label">Para la recepción</div>
+          <div class="card-h3">Reservas y lista de espera</div>
+          <p class="card-desc">Reservas en línea, depósitos de garantía y lista de espera con notificación SMS automática.</p>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-card-preview card-floor">
+          <div class="floor-mockup">
+            <div class="floor-grid">
+              <div class="floor-table ft-green">1</div>
+              <div class="floor-table ft-green">2</div>
+              <div class="floor-table ft-amber">3</div>
+              <div class="floor-table ft-red">4</div>
+            </div>
+          </div>
+        </div>
+        <div class="system-card-body">
+          <div class="card-label">Para el salón y el pase</div>
+          <div class="card-h3">Piso en vivo</div>
+          <p class="card-desc">Cada mesa, su tiempo de rotación y el estado de la comanda en tiempo real.</p>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <div class="system-card-preview card-rota">
+          <div style="background:white;padding:12px;border-radius:12px 12px 0 0;width:100%;font-size:11px;font-weight:700;">
+            Turnos de la semana
+          </div>
+        </div>
+        <div class="system-card-body">
+          <div class="card-label">Para administración</div>
+          <div class="card-h3">Turnos del personal</div>
+          <p class="card-desc">Turnos optimizados en base a tus reservas estimadas. Sin cambios de última hora en chats.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="/images/Logotipo_Secundario.png" alt="Mishky Logo" style="height:32px;filter:brightness(0) invert(1);" />
+      <span style="font-size:13px;color:#888;">© 2026 Mishky POS. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
